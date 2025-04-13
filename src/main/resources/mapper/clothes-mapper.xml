@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycom.myapp.clothes.dao.UserClothesDao">
+
+    <select id="listUserClothes" parameterType="long">
+        select * from user_clothes where user_id = #{userId}
+    </select>
+
+    <select id="detailUserClothes" parameterType="long">
+        select * from user_clothes where clothes_id = #{clothesId}
+    </select>
+
+    <insert id="insertClothes" parameterType="com.mycom.myapp.clothes.dto.UserClothesDto">
+        insert into user_clothes (user_id, clothes_name, category, color, season, image_url)
+        values (#{userId}, #{clothesName}, #{category}, #{color}, #{season}, #{imageUrl})
+    </insert>
+
+    <delete id="deleteClothes" parameterType="long">
+        delete from user_clothes where user_id = #{userId}
+    </delete>
+</mapper>
