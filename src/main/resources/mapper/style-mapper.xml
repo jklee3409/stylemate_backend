@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycom.myapp.style.dao.StyleDao">
+
+    <select id="listStyle" resultType="com.mycom.myapp.style.dto.StyleDto">
+        select * from style;
+    </select>
+
+    <select id="listUserStyle" parameterType="long" resultType="com.mycom.myapp.style.dto.UserStyleDto">
+        select s.style_id, s.style_name
+        from style s, user_style u
+        where u.user_id = #{userId}
+            and s.style_id = u.style_id
+    </select>
+
+    <insert id="insertUserStyle" parameterType="com.mycom.myapp.style.dto.UserStyleDto">
+        insert into user_style (user_id, style_id)
+        values (#{userId}, #{styleId})
+    </insert>
+</mapper>
