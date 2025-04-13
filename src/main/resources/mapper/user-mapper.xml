@@ -11,4 +11,9 @@
     <select id="existsUser" parameterType="string" resultType="boolean">
         select 1 from user where kakao_id = #{kakaoId}
     </select>
+
+    <insert id="insertUser" parameterType="com.mycom.myapp.user.dto.UserDto">
+        insert into user (kakao_id, nickname, gender, height, weight)
+        values (#{kakaoId}, #{nickname}, #{gender}, #{height}, #{weight})
+    </insert>
 </mapper>
