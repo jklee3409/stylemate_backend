@@ -18,6 +18,17 @@
         values (#{userId}, #{clothesName}, #{category}, #{color}, #{season}, #{imageUrl})
     </insert>
 
+    <update id="updateClothes" parameterType="com.mycom.myapp.clothes.dto.UserClothesDto">
+        update user_clothes
+        set clothes_name = #{clothesName},
+            category = #{category},
+            color = #{color},
+            season = #{season},
+            image_url = #{imageUrl}
+        where clothes_id = #{clothesId}
+            and user_id = #{userId}
+    </update>
+
     <delete id="deleteClothes" parameterType="long">
         delete from user_clothes where user_id = #{userId}
     </delete>
