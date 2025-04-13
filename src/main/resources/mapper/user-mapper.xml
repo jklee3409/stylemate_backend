@@ -16,4 +16,9 @@
         insert into user (kakao_id, nickname, gender, height, weight)
         values (#{kakaoId}, #{nickname}, #{gender}, #{height}, #{weight})
     </insert>
+
+    <delete id="deleteUser" parameterType="long">
+        delete from user
+        where user_id = userId;
+    </delete>
 </mapper>
