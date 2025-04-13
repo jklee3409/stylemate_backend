@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycom.myapp.schedule.dao.ScheduleDao">
+    <select id="monthSchedule" parameterType="map" resultType="com.mycom.myapp.schedule.dto.ScheduleDto">
+        select *
+        from schedule
+        where user_id = #{userId}
+            and schedule_at between #{startDate} and #{endDate}
+    </select>
+
+    <select id="detailSchedule" parameterType="long" resultType="com.mycom.myapp.schedule.dto.ScheduleDto">
+        select *
+        from schedule
+        where schedule_id = #{scheduleId}
+            and user_id = #{userId}
+    </select>
+
+    <insert id="insertSchedule" parameterType="com.mycom.myapp.schedule.dto.ScheduleDto">
+        insert into schedule (user_id, schedule_name, category, schedule_at)
+        values (#{userId}, #{scheduleName}, #{category}, #{scheduleAt})
+    </insert>
+
+    <update id="updateSchedule" parameterType="com.mycom.myapp.schedule.dto.ScheduleDto">
+        update schedule
+        set schedule_name = #{scheduleName},
+            category = #{category},
+            schedule_at = #{scheduleAt}
+        where schedule_id = #{scheduleId}
+            and user_id = #{userId}
+    </update>
+
+    <delete id="deleteSchedule" parameterType="long">
+        delete from schedule where schedule_id = schedule_id
+    </delete>
+</mapper>
