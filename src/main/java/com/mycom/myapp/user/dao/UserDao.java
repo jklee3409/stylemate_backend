@@ -9,4 +9,6 @@ public interface UserDao {
     UserDto findUser(String kakaoId);
 
     boolean existsUser(String kakaoId);
+
+    int insertUser(UserDto userDto);
 }
