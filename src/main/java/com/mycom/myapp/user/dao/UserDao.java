@@ -11,4 +11,6 @@ public interface UserDao {
     boolean existsUser(String kakaoId);
 
     int insertUser(UserDto userDto);
+
+    int deleteUser(long userId);
 }
