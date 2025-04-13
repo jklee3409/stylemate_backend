@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycom.myapp.coordination.dao.RecommendedDao">
+
+    <select id="detailRecommended" parameterType="long" resultType="com.mycom.myapp.coordination.dto.RecommendedDto">
+        select * from recommended where recommended_id = #{recommendedId}
+    </select>
+
+    <insert id="insertRecommended" parameterType="com.mycom.myapp.coordination.dto.RecommendedDto">
+        insert into recommended (user_id, schedule_id, ai_prompt, ai_response, feedback)
+        values (#{userId}, #{scheduleId}, #{aiPrompt}, #{aiResponse}, #{feedback})
+    </insert>
+
+    <delete id="deleteRecommended" parameterType="long">
+        delete from recommended where recommended_id = #{recommendedId}
+    </delete>
+</mapper>
